@@ -4,4 +4,5 @@
 
 Taki projekt programu który miałby np obliczyć długość boku c kiedy podamy mu bok <i>a</i> i <i>b</i> oraz kąt pomiędzy nimi.</br>
 Work In Progress...</br> Na dole jest to jak wprowadzać dane do kalkulatora</br>
-![trojkat1](https://github.com/user-attachments/assets/604bda6a-98af-4720-be56-ddd7ecf07813)
+![trojkat1](https://github.com/user-attachments/assets/a3cecc68-8058-4d01-a9d3-0bf79dbf005f)
+
