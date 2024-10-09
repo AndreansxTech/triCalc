@@ -3,8 +3,9 @@
 #include <cmath>
 using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
-char wybor;
-int kolor;
+char wybor, wybor2;
+float alfa,beta,gamma;
+int kolor, juz_zapisane;
 void kolory()
 {
     SetConsoleTextAttribute(color,kolor);
@@ -24,11 +25,10 @@ cout<<R"(  MM     MM       MM `Mb.     ,'8M   MM    MM YM.    ,         VVV   YA
 )";
 SetConsoleTextAttribute(color,7);
 }
-void trojkat()
+void dane()
 {
-    cout<<R"(
+    cout<<"Wpisz dane jakie masz:\n";
 
-    )";
 }
 void informacja()
 {
@@ -40,12 +40,51 @@ void menu()
 {
     informacja();
     cout<<"Pamietaj o zasadach wprowadzania danych: \n";
-    kolor=12;kolory();cout<<" kat alfa";kolor=14;kolory();cout<<" znajduje sie pomiedzy bokami a i c, \n";
-    kolor=12;kolory();cout<<" kat beta";kolor=14;kolory();cout<<" jest miedzy bokami a i b, \n";
-    kolor=12;kolory();cout<<" kat gamma";kolor=14;kolory();cout<<" jest pomiedzy bokami b i c\n";
-    kolor=11;kolory();cout<<"Ktory bok chcesz obliczyc?\n";
-    cout<<"Wpisz odpowiednio 1 dla boku a, 2 dla boku b, 3 dla boku c, a dla katu alfa, b dla katu beta, c dla katu gamma: ";
-    kolor=9;kolory();cin>>wybor;
+    kolor=12;kolory();cout<<" kat alfa";kolor=14;kolory();cout<<" znajduje sie pomiedzy bokami c i b, \n";
+    kolor=12;kolory();cout<<" kat beta";kolor=14;kolory();cout<<" jest miedzy bokami a i c, \n";
+    kolor=12;kolory();cout<<" kat gamma";kolor=14;kolory();cout<<" jest pomiedzy bokami a i b\n";
+    kolor=11;kolory();
+    cout<<" Musisz zadeklarowc trzy dane aby obliczyc wszystkie boki trojkata\n";
+    int zadeklarowane_katy;
+    while (juz_zapisane<3)
+    {
+        cout<<" Jak narazie zadeklarowales "<<juz_zapisane<<" danych\n";
+        if(zadeklarowane_katy<2)
+        {
+            cout<<"Wybierz co chcesz zapisac (k aby zapisac kat, b aby zapisac bok): ";kolor=9;kolory();cin>>wybor;
+            switch(wybor)
+            {
+            case 'k':
+            case 'K':
+                informacja(); cout<<"Wybrales zapisanie katu\n Wpisz ktoremu katowi chcesz przypisac wartosc (a- alfa, b-beta, g-gamma): ";
+                kolor=9;kolory();cin>>wybor2;
+                switch(wybor2)
+                {
+                case 'a':
+                case 'A':
+                    informacja();cout<<"Wybrales przypisanie wartosci katowi alfa\n Wpisz wartosc: ";kolor=9;kolory();cin>>alfa;
+                    juz_zapisane+=1;zadeklarowane_katy+=1;
+                    break;
+                case 'b':
+                case 'B':
+                    informacja();cout<<"Wybrales przypisanie wartosci katowi beta\n Wpisz wartosc: ";kolor=9;kolory();cin>>beta;
+                    juz_zapisane+=1;zadeklarowane_katy+=1;
+                    break;
+                case 'g':
+                case 'G':
+                    informacja();cout<<"Wybrales przypisanie wartosci katowi gamma\n Wpisz wartosc: ";kolor=9;kolory();cin>>gamma;
+                    juz_zapisane+=1;zadeklarowane_katy+=1;
+                    break;
+                default:
+                    kolor=12;kolory();cout<<"Nie ma takiej opcji\n";
+                    break;
+                }//swithc
+            }//swtich
+        
+        }//if
+        else
+    }
+
 }
 int main()
 {
@@ -53,16 +92,7 @@ int main()
     while (true)
     {
     menu();
-        switch(wybor)
-        {
-        case '1':
-            informacja(); cout<<" Wybrales obliczanie boku a";kolor=11;kolory();
-            cout<<" Ktory kat trojkata chcesz wprowadzic";
-            break;
-        default:
-            kolor=12;kolory();cout<<" Nie ma takiej opcji\n";
-            break;
-        }
+
     }
 
     return 0;
