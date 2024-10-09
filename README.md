@@ -1,3 +1,3 @@
-<h1>Trygonometryczny kalkulator</h1></br>
+<h1>triCalc</h1></br>
 Taki projekt programu który miałby np obliczyć długość boku c kiedy podamy mu bok <i>a</i> i <i>b</i> oraz kąt pomiędzy nimi.</br>
 Work In Progress...
