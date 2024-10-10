@@ -5,24 +5,29 @@ using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 char wybor, wybor2,wybor3;
 float alfa,beta,gamma,bok_a,bok_b,bok_c;
-int kolor,juz_zapisane,katy,boki;;
+int kolor,juz_zapisane,katy,boki;
+bool kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c;
 void kolory()
 {
     SetConsoleTextAttribute(color,kolor);
 }
 void logo()
 {
-SetConsoleTextAttribute(color,9);
-cout<<R"(  mm              db   .g8"""bgd         `7MM)"<<endl;Sleep(100);
-cout<<R"(  MM                 .dP'     `M           MM                                       __,)"<<endl;Sleep(100);
-cout<<R"(mmMMmm `7Mb,od8 `7MM dM'       ` ,6"Yb.    MM  ,p6"bo      `7M'   `MF',pP""Yq.     `7MM  )"<<endl;SetConsoleTextAttribute(color,13);Sleep(100);
-cout<<R"(  MM     MM' "'   MM MM         8)   MM    MM 6M'  OO        VA   ,V 6W'    `Wb      MM)"<<endl;Sleep(100);
-cout<<R"(  MM     MM       MM MM.         ,pm9MM    MM 8M              VA ,V  8M      M8      MM)"<<endl;SetConsoleTextAttribute(color,14);Sleep(100);
-cout<<R"(  MM     MM       MM `Mb.     ,'8M   MM    MM YM.    ,         VVV   YA.    ,A9 ,,   MM)"<<endl;Sleep(100);
-cout<<R"(  `Mbmo.JMML.   .JMML. `"bmmmd' `Moo9^Yo..JMML.YMbmd'           W     `Ybmmd9'  db .JMML.)"<<endl;Sleep(100);
+    for (int i=0;i<4;i++)
+    {
+        cout<<".";Sleep(300);cout<<"\b \b";Sleep(300);
+    }
+SetConsoleTextAttribute(color,9);cout<<endl;
+cout<<R"(  mm              db   .g8"""bgd         `7MM)"<<endl;Sleep(150);
+cout<<R"(  MM                 .dP'     `M           MM                                       __,)"<<endl;Sleep(150);
+cout<<R"(mmMMmm `7Mb,od8 `7MM dM'       ` ,6"Yb.    MM  ,p6"bo      `7M'   `MF',pP""Yq.     `7MM  )"<<endl;SetConsoleTextAttribute(color,13);Sleep(150);
+cout<<R"(  MM     MM' "'   MM MM         8)   MM    MM 6M'  OO        VA   ,V 6W'    `Wb      MM)"<<endl;Sleep(150);
+cout<<R"(  MM     MM       MM MM.         ,pm9MM    MM 8M              VA ,V  8M      M8      MM)"<<endl;SetConsoleTextAttribute(color,14);Sleep(150);
+cout<<R"(  MM     MM       MM `Mb.     ,'8M   MM    MM YM.    ,         VVV   YA.    ,A9 ,,   MM)"<<endl;Sleep(150);
+cout<<R"(  `Mbmo.JMML.   .JMML. `"bmmmd' `Moo9^Yo..JMML.YMbmd'           W     `Ybmmd9'  db .JMML.)"<<endl;Sleep(150);
         for (int i=0; i<89; i++)
        {
-           cout<<"-"; Sleep(1);
+           cout<<"_"; Sleep(1);
        }
     cout<<"\n";SetConsoleTextAttribute(color,7);
 }
@@ -48,10 +53,72 @@ void obliczanie()
     if (katy==2&&boki==1)
     {
         cout<<"katy 2 boki 1";
-
+        if(kat_alfa==1&&kat_beta==1)
+        {
+            if (bk_c==1)
+            {
+                cout<<"kat alfa, beta, bok c\n";
+                exit(0);
+            }
+            else if(bk_b==1)
+            {
+                cout<<"kat alfa, beta, bok b\n";
+                exit(0);
+            }
+            else
+            {
+                cout<<"kat alfa, beta, bok a\n";
+                exit(0);
+            }
+        }
+        else if(kat_alfa==1&&kat_gamma==1)
+        {
+            if (bk_c==1)
+            {
+                cout<<"kat alfa, gamma, bok c\n";
+                exit(0);
+            }
+            else if(bk_b==1)
+            {
+                cout<<"kat alfa, gamma, bok b\n";
+                exit(0);
+            }
+            else
+            {
+                cout<<"kat alfa, gamma, bok a\n";
+                exit(0);
+            }
+        }
+        else(kat_beta==1&&kat_gamma==1)
+        {
+            if (bk_c==1)
+            {
+                cout<<"kat beta, gamma, bok c\n";
+                exit(0);
+            }
+            else if(bk_b==1)
+            {
+                cout<<"kat beta, gamma, bok b\n";
+                exit(0);
+            }
+            else
+            {
+                cout<<"kat beta, gamma, bok a\n";
+                exit(0);
+            }
+        }
         exit(0);
     }
-    else if (katy=1)
+    else if (katy==1&&boki==2)
+    {
+        cout<<" katy 1 boki 2";
+        exit(0);
+    }
+    else if (katy==3)
+    {
+        cout<<"trzy katy";
+        exit(0);
+    }
 
     exit(0);
 }
@@ -65,7 +132,7 @@ int main()
     menu();
         while (juz_zapisane<3)
         {
-        kolor=11;kolory();
+        kolor=11;kolory(); cout<<kat_alfa<<"kat alfa\n";
         cout<<"\n Jak narazie zadeklarowales "<<juz_zapisane<<" danych\n";
         cout<<katy<<" katow i "<<boki<<" bokow\n";
             cout<<"Wybierz co chcesz zapisac (k aby zapisac kat, b aby zapisac bok, t aby pokazac trojkat, w aby wyjsc): ";kolor=9;kolory();cin>>wybor;
@@ -80,17 +147,17 @@ int main()
                 case 'a':
                 case 'A':
                     informacja();cout<<"Wybrales przypisanie wartosci katowi alfa\n Wpisz wartosc: ";kolor=9;kolory();cin>>alfa;
-                    juz_zapisane+=1;katy+=1;
+                    juz_zapisane+=1;katy+=1;kat_alfa=1;
                     break;
                 case 'b':
                 case 'B':
                     informacja();cout<<"Wybrales przypisanie wartosci katowi beta\n Wpisz wartosc: ";kolor=9;kolory();cin>>beta;
-                    juz_zapisane+=1;katy+=1;
+                    juz_zapisane+=1;katy+=1;kat_beta=1;
                     break;
                 case 'g':
                 case 'G':
                     informacja();cout<<"Wybrales przypisanie wartosci katowi gamma\n Wpisz wartosc: ";kolor=9;kolory();cin>>gamma;
-                    juz_zapisane+=1;katy+=1;
+                    juz_zapisane+=1;katy+=1;kat_gamma=1;
                     break;
                 default:
                     kolor=12;kolory();cout<<"Nie ma takiej opcji\n";
