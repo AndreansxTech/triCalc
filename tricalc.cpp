@@ -11,6 +11,29 @@ void kolory()
 {
     SetConsoleTextAttribute(color,kolor);
 }
+void trojkat()
+{
+    cout<<R"(
+                 MAAA
+                AA    AA
+               AA       WAAW
+              A             AAH
+             A )";kolor=12;kolory();cout<<R"(    gamma   )";kolor=9;kolory();cout<<R"(    AAA
+            PA                    A AA              )";kolor=12;kolory();cout<<"b";kolor=9;kolory();cout<<R"(
+    )";kolor=12;kolory();cout<<"a";kolor=9;kolory();cout<<R"(      AA                  YAA     AA
+          AA                 AAU          AA
+         AAA AAAAAD    AAAAAS              AAAAP
+        A    AAA                          A     AAM
+       AA        AA                       A          AA
+      AA           AA                    A             DAA
+     AU             A                   AA                 AA
+    WA   )";kolor=12;kolory();cout<<"beta";kolor=9;kolory();cout<<R"(         A                  A       )";kolor=12;kolory();cout<<"alfa";kolor=9;kolory();cout<<R"(          AAG
+   AA                 A                  A                        AAP
+  AA                  OA                 AA                          AAA
+ AA                   DA                  A                             AAA
+WAGWHBBBBBBBBBBBBBBBBBPA MBBBBBBBBBBBBBBBBWAAKBBBBBBBBBBBBBBBBBBBBBBBBBBHS  AAA
+                                )";kolor=12;kolory();cout<<"c\n";
+}
 void logo()
 {
     for (int i=0;i<4;i++)
@@ -166,7 +189,7 @@ void obliczanie()
 
 int main()
 {
-    //while (true)
+
     {
     juz_zapisane,katy,boki=0;
     logo();
@@ -282,6 +305,10 @@ int main()
                         break;
                     }
                 break;
+            case 't':
+            case 'T':
+                    trojkat();
+                    break;
             default:
                     kolor=12;kolory();cout<<" Nie ma takiej opcji\n"; break;
             }//swtich
