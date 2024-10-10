@@ -81,8 +81,13 @@ void obliczanie()
                 cout<<beta<<" beta\n";
                 gamma=180-alfa-beta;
                 cout<<gamma<<"gamma\n";
-                a=c*sin(alfa)/sin(180-alfa-beta); cout<<a<<" bok a\n";
-                b=c*sin(beta)/sin(180-alfa-beta);cout<<b<<" bok b\n";
+                cout<<c<<" c\n";
+                sin_alfa=sin(alfa);sin_beta=sin(beta);sin_gamma=sin(gamma);
+                cout<<sin_alfa<<" sinalfa\n";
+                cout<<sin_beta<<" sinbeta\n";
+                cout<<sin_gamma<<" singamma\n";
+                a=(c*sin(alfa))/sin_gamma; cout<<a<<" bok a\n";
+                b=(c*sin(beta))/sin_gamma;cout<<b<<" bok b\n";
                 exit(0);
             }
             else if (bk_b==1)
@@ -215,7 +220,7 @@ int main()
     menu();
         while (juz_zapisane<3)
         {
-        kolor=11;kolory(); cout<<kat_alfa<<"kat alfa\n";
+        kolor=11;kolory();
         cout<<"\n Jak narazie zadeklarowales "<<juz_zapisane<<" danych\n";
         cout<<katy<<" katow i "<<boki<<" bokow\n";
             cout<<"Wybierz co chcesz zapisac (k aby zapisac kat, b aby zapisac bok, t aby pokazac trojkat, w aby wyjsc): ";kolor=9;kolory();cin>>wybor;
