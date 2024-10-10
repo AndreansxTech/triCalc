@@ -4,8 +4,8 @@
 using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 char wybor, wybor2,wybor3;
-float alfa,beta,gamma,bok_a,bok_b,bok_c;
-int kolor,juz_zapisane,katy,boki;
+float alfa,beta,gamma,a,b,c,sin_alfa,sin_beta,sin_gamma=0;
+int kolor,juz_zapisane,katy,boki=0;
 bool kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c;
 void kolory()
 {
@@ -36,10 +36,6 @@ WAGWHBBBBBBBBBBBBBBBBBPA MBBBBBBBBBBBBBBBBWAAKBBBBBBBBBBBBBBBBBBBBBBBBBBHS  AAA
 }
 void logo()
 {
-    for (int i=0;i<4;i++)
-    {
-        cout<<".";Sleep(300);cout<<"\b \b";Sleep(300);
-    }
 SetConsoleTextAttribute(color,9);cout<<endl;
 cout<<R"(  mm              db   .g8"""bgd         `7MM)"<<endl;Sleep(150);
 cout<<R"(  MM                 .dP'     `M           MM                                       __,)"<<endl;Sleep(150);
@@ -81,16 +77,39 @@ void obliczanie()
             if (bk_c==1)
             {
                 cout<<"kat alfa, beta, bok c\n";
+                cout<<alfa<<" alfa\n";
+                cout<<beta<<" beta\n";
+                gamma=180-alfa-beta;
+                cout<<gamma<<"gamma\n";
+                a=c*sin(alfa)/sin(180-alfa-beta); cout<<a<<" bok a\n";
+                b=c*sin(beta)/sin(180-alfa-beta);cout<<b<<" bok b\n";
                 exit(0);
             }
-            else if(bk_b==1)
+            else if (bk_b==1)
             {
                 cout<<"kat alfa, beta, bok b\n";
+                gamma=180-alfa-beta;
+                cout<<gamma<<"gamma\n";
+                sin_alfa = sin(alfa);
+                sin_beta = sin(beta);
+                sin_gamma = sin(gamma);
+                cout<<sin_alfa<<endl;
+                cout<<sin_beta<<endl;
+                a=(c*(sin_alfa/sin_gamma)); cout<<a<<endl;
                 exit(0);
             }
-            else
+            else if (bk_a==1)
             {
                 cout<<"kat alfa, beta, bok a\n";
+                gamma=180-alfa-beta;
+                cout<<gamma<<"gamma\n";
+                sin_alfa = sin(alfa);
+                sin_beta = sin(beta);
+                sin_gamma = sin(gamma);
+                cout<<sin_alfa<<endl;
+                cout<<sin_beta<<endl;
+                a=c*sin_alfa/sin_gamma; cout<<a<<" bok a\n";
+                b=c*sin_beta/sin_gamma;cout<<b<<"bok b\n";
                 exit(0);
             }
         }
@@ -252,9 +271,9 @@ int main()
                 case 'a':
                 case 'A':
                     informacja();cout<<"Wybrales przypisanie wartosci bokowi a\n Wpisz wartosc: ";kolor=9;kolory();
-                    while(!(cin>>bok_a))
+                    while(!(cin>>a))
                     {
-                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>bok_a;
+                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>a;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;boki+=1;bk_a=1;
@@ -262,9 +281,9 @@ int main()
                 case 'b':
                 case 'B':
                     informacja();cout<<"Wybrales przypisanie wartosci bokowi b\n Wpisz wartosc: ";kolor=9;kolory();
-                    while(!(cin>>bok_b))
+                    while(!(cin>>b))
                     {
-                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>bok_b;
+                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>b;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;boki+=1;bk_b=1;
@@ -272,9 +291,9 @@ int main()
                 case 'c':
                 case 'C':
                     informacja();cout<<"Wybrales przypisanie wartosci bokowi c\n Wpisz wartosc: ";kolor=9;kolory();
-                    while(!(cin>>bok_c))
+                    while(!(cin>>c))
                     {
-                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>bok_c;
+                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>c;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;boki+=1;bk_c=1;
