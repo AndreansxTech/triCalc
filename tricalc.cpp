@@ -89,19 +89,19 @@ void obliczanie()
                 exit(0);
             }
         }
-        else(kat_beta==1&&kat_gamma==1)
+        else if (kat_beta==1&&kat_gamma==1)
         {
             if (bk_c==1)
             {
                 cout<<"kat beta, gamma, bok c\n";
                 exit(0);
             }
-            else if(bk_b==1)
+            else if (bk_b==1)
             {
                 cout<<"kat beta, gamma, bok b\n";
                 exit(0);
             }
-            else
+            else if (bk_c==1)
             {
                 cout<<"kat beta, gamma, bok a\n";
                 exit(0);
@@ -112,11 +112,52 @@ void obliczanie()
     else if (katy==1&&boki==2)
     {
         cout<<" katy 1 boki 2";
+        if(bk_a==1&&bk_b==1)
+        {
+            if (kat_alfa==1)
+            {
+                cout<<"bok a, b kat a";
+                exit(0);
+            }
+            else if (kat_beta==1)
+            {
+                cout<<"bok a, b kat b";
+                exit(0);
+            }
+            else if (kat_gamma==1)
+            {
+                cout<<"bok a, b kat g";
+                exit(0);
+            }
+        }
+        else if (bk_a==1&&bk_c==1)
+        {
+            if (kat_alfa==1)
+            {
+                cout<<"bok a, c kat a";
+                exit(0);
+            }
+            else if (kat_beta==1)
+            {
+                cout<<"bok a, c kat b";
+                exit(0);
+            }
+            else if (kat_gamma==1)
+            {
+                cout<<"bok a, c kat g";
+                exit(0);
+            }
+        }
         exit(0);
     }
     else if (katy==3)
     {
         cout<<"trzy katy";
+        exit(0);
+    }
+    else if(boki==3)
+    {
+        cout<<"trzy boki";
         exit(0);
     }
 
@@ -146,17 +187,32 @@ int main()
                 {
                 case 'a':
                 case 'A':
-                    informacja();cout<<"Wybrales przypisanie wartosci katowi alfa\n Wpisz wartosc: ";kolor=9;kolory();cin>>alfa;
+                    informacja();cout<<"Wybrales przypisanie wartosci katowi alfa\n Wpisz wartosc: ";kolor=9;kolory();
+                    while(!(cin>>alfa))
+                    {
+                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>alfa;
+                        cin.clear();cin.ignore();
+                    }
                     juz_zapisane+=1;katy+=1;kat_alfa=1;
                     break;
                 case 'b':
                 case 'B':
-                    informacja();cout<<"Wybrales przypisanie wartosci katowi beta\n Wpisz wartosc: ";kolor=9;kolory();cin>>beta;
+                    informacja();cout<<"Wybrales przypisanie wartosci katowi beta\n Wpisz wartosc: ";kolor=9;kolory();
+                    while(!(cin>>beta))
+                    {
+                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>beta;
+                        cin.clear();cin.ignore();
+                    }
                     juz_zapisane+=1;katy+=1;kat_beta=1;
                     break;
                 case 'g':
                 case 'G':
-                    informacja();cout<<"Wybrales przypisanie wartosci katowi gamma\n Wpisz wartosc: ";kolor=9;kolory();cin>>gamma;
+                    informacja();cout<<"Wybrales przypisanie wartosci katowi gamma\n Wpisz wartosc: ";kolor=9;kolory();
+                    while(!(cin>>gamma))
+                    {
+                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>gamma;
+                        cin.clear();cin.ignore();
+                    }
                     juz_zapisane+=1;katy+=1;kat_gamma=1;
                     break;
                 default:
@@ -172,18 +228,33 @@ int main()
                 {
                 case 'a':
                 case 'A':
-                    informacja();cout<<"Wybrales przypisanie wartosci bokowi a\n Wpisz wartosc: ";kolor=9;kolory();cin>>bok_a;
-                    juz_zapisane+=1;boki+=1;
+                    informacja();cout<<"Wybrales przypisanie wartosci bokowi a\n Wpisz wartosc: ";kolor=9;kolory();
+                    while(!(cin>>bok_a))
+                    {
+                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>bok_a;
+                        cin.clear();cin.ignore();
+                    }
+                    juz_zapisane+=1;boki+=1;bk_a=1;
                     break;
                 case 'b':
                 case 'B':
-                    informacja();cout<<"Wybrales przypisanie wartosci bokowi b\n Wpisz wartosc: ";kolor=9;kolory();cin>>bok_b;
-                    juz_zapisane+=1;boki+=1;
+                    informacja();cout<<"Wybrales przypisanie wartosci bokowi b\n Wpisz wartosc: ";kolor=9;kolory();
+                    while(!(cin>>bok_b))
+                    {
+                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>bok_b;
+                        cin.clear();cin.ignore();
+                    }
+                    juz_zapisane+=1;boki+=1;bk_b=1;
                     break;
                 case 'c':
                 case 'C':
-                    informacja();cout<<"Wybrales przypisanie wartosci bokowi c\n Wpisz wartosc: ";kolor=9;kolory();cin>>bok_c;
-                    juz_zapisane+=1;boki+=1;
+                    informacja();cout<<"Wybrales przypisanie wartosci bokowi c\n Wpisz wartosc: ";kolor=9;kolory();
+                    while(!(cin>>bok_c))
+                    {
+                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>bok_c;
+                        cin.clear();cin.ignore();
+                    }
+                    juz_zapisane+=1;boki+=1;bk_c=1;
                     break;
                 default:
                     kolor=12;kolory();cout<<"Nie ma takiej opcji\n";
