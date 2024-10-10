@@ -12,18 +12,19 @@ void kolory()
 }
 void logo()
 {
-    SetConsoleTextAttribute(color,9);
-    cout<<R"(
-  mm              db   .g8"""bgd         `7MM
-  MM                 .dP'     `M           MM                                       __,
-mmMMmm `7Mb,od8 `7MM dM'       ` ,6"Yb.    MM  ,p6"bo      `7M'   `MF',pP""Yq.     `7MM  )"<<endl;SetConsoleTextAttribute(color,13);
-cout<<R"(  MM     MM' "'   MM MM         8)   MM    MM 6M'  OO        VA   ,V 6W'    `Wb      MM
-  MM     MM       MM MM.         ,pm9MM    MM 8M              VA ,V  8M      M8      MM)"<<endl;SetConsoleTextAttribute(color,14);
-cout<<R"(  MM     MM       MM `Mb.     ,'8M   MM    MM YM.    ,         VVV   YA.    ,A9 ,,   MM
-  `Mbmo.JMML.   .JMML. `"bmmmd' `Moo9^Yo..JMML.YMbmd'           W     `Ybmmd9'  db .JMML.
-
-)";
-SetConsoleTextAttribute(color,7);
+SetConsoleTextAttribute(color,9);
+cout<<R"(  mm              db   .g8"""bgd         `7MM)"<<endl;Sleep(100);
+cout<<R"(  MM                 .dP'     `M           MM                                       __,)"<<endl;Sleep(100);
+cout<<R"(mmMMmm `7Mb,od8 `7MM dM'       ` ,6"Yb.    MM  ,p6"bo      `7M'   `MF',pP""Yq.     `7MM  )"<<endl;SetConsoleTextAttribute(color,13);Sleep(100);
+cout<<R"(  MM     MM' "'   MM MM         8)   MM    MM 6M'  OO        VA   ,V 6W'    `Wb      MM)"<<endl;Sleep(100);
+cout<<R"(  MM     MM       MM MM.         ,pm9MM    MM 8M              VA ,V  8M      M8      MM)"<<endl;SetConsoleTextAttribute(color,14);Sleep(100);
+cout<<R"(  MM     MM       MM `Mb.     ,'8M   MM    MM YM.    ,         VVV   YA.    ,A9 ,,   MM)"<<endl;Sleep(100);
+cout<<R"(  `Mbmo.JMML.   .JMML. `"bmmmd' `Moo9^Yo..JMML.YMbmd'           W     `Ybmmd9'  db .JMML.)"<<endl;Sleep(100);
+        for (int i=0; i<89; i++)
+       {
+           cout<<"-"; Sleep(1);
+       }
+    cout<<"\n";SetConsoleTextAttribute(color,7);
 }
 void informacja()
 {
@@ -33,26 +34,41 @@ void informacja()
 }
 void menu()
 {
-    informacja();
+    cout<<endl;informacja();
     cout<<"Pamietaj o zasadach wprowadzania danych: \n";
     kolor=12;kolory();cout<<" kat alfa";kolor=14;kolory();cout<<" znajduje sie pomiedzy bokami c i b, \n";
     kolor=12;kolory();cout<<" kat beta";kolor=14;kolory();cout<<" jest miedzy bokami a i c, \n";
     kolor=12;kolory();cout<<" kat gamma";kolor=14;kolory();cout<<" jest pomiedzy bokami a i b\n";
-    kolor=11;kolory();
+    kolor=9;kolory();
     cout<<" Musisz zadeklarowc trzy dane aby obliczyc wszystkie boki trojkata\n Kiedy zadeklarujesz trzy dane program obliczy reszte\n";
 }
+void obliczanie()
+{
+    cout<<"obliczanoie\n zapisales trzy dane\n";
+    if (katy==2&&boki==1)
+    {
+        cout<<"katy 2 boki 1";
 
+        exit(0);
+    }
+    else if (katy=1)
+
+    exit(0);
+}
 
 int main()
 {
+    //while (true)
+    {
     juz_zapisane,katy,boki=0;
     logo();
     menu();
         while (juz_zapisane<3)
         {
-        cout<<" Jak narazie zadeklarowales "<<juz_zapisane<<" danych\n";
+        kolor=11;kolory();
+        cout<<"\n Jak narazie zadeklarowales "<<juz_zapisane<<" danych\n";
         cout<<katy<<" katow i "<<boki<<" bokow\n";
-            cout<<"Wybierz co chcesz zapisac (k aby zapisac kat, b aby zapisac bok): ";kolor=9;kolory();cin>>wybor;
+            cout<<"Wybierz co chcesz zapisac (k aby zapisac kat, b aby zapisac bok, t aby pokazac trojkat, w aby wyjsc): ";kolor=9;kolory();cin>>wybor;
             switch(wybor)
             {
             case 'k':
@@ -107,9 +123,33 @@ int main()
                     break;
                 }//swithc
             break;
+            case 'w':
+            case 'W':
+                    char wyjscie;
+                    informacja(); cout<<"Czy napewno chcesz opusic program? T/N: ";kolor=9;kolory();cin>>wyjscie;
+                    switch(wyjscie)
+                    {
+                    case 't':
+                    case 'T':
+                        informacja();cout<<"Zamykanie programu triCalc v0.1";
+                        for (int w=0; w<5;w++)
+                           {
+                            kolor=w+3;kolory();
+                            cout<<".";Sleep(70);
+                           }
+                        exit(0);
+                        break;
+                    default:
+                        informacja();cout<<"Zostajesz w programie\n";
+                        break;
+                    }
+                break;
             default:
                     kolor=12;kolory();cout<<" Nie ma takiej opcji\n"; break;
             }//swtich
+
         }
+        obliczanie();
+    }
     return 0;
 }
