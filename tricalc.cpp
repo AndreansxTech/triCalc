@@ -25,11 +25,6 @@ cout<<R"(  MM     MM       MM `Mb.     ,'8M   MM    MM YM.    ,         VVV   YA
 )";
 SetConsoleTextAttribute(color,7);
 }
-void dane()
-{
-    cout<<"Wpisz dane jakie masz:\n";
-
-}
 void informacja()
 {
     kolor=14;kolory();cout<<"[";
@@ -38,7 +33,6 @@ void informacja()
 }
 void menu()
 {
-
     informacja();
     cout<<"Pamietaj o zasadach wprowadzania danych: \n";
     kolor=12;kolory();cout<<" kat alfa";kolor=14;kolory();cout<<" znajduje sie pomiedzy bokami c i b, \n";
@@ -46,9 +40,6 @@ void menu()
     kolor=12;kolory();cout<<" kat gamma";kolor=14;kolory();cout<<" jest pomiedzy bokami a i b\n";
     kolor=11;kolory();
     cout<<" Musisz zadeklarowc trzy dane aby obliczyc wszystkie boki trojkata\n Kiedy zadeklarujesz trzy dane program obliczy reszte\n";
-
-
-
 }
 
 
@@ -119,9 +110,6 @@ int main()
             default:
                     kolor=12;kolory();cout<<" Nie ma takiej opcji\n"; break;
             }//swtich
-
         }
-
-
     return 0;
 }
