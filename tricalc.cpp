@@ -4,7 +4,7 @@
 using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 char wybor, wybor2,wybor3;
-float alfa,beta,gamma,a,b,c,sin_alfa,sin_beta,sin_gamma=0;
+float alfa,beta,gamma,a,b,c,sin_beta,sin_gamma=0;
 int kolor,juz_zapisane,katy,boki=0;
 bool kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c;
 void kolory()
@@ -12,27 +12,43 @@ void kolory()
     SetConsoleTextAttribute(color,kolor);
 }
 void trojkat()
-{
+{   kolor=9;kolory();
     cout<<R"(
-                 MAAA
-                AA    AA
-               AA       WAAW
-              A             AAH
-             A )";kolor=12;kolory();cout<<R"(    gamma   )";kolor=9;kolory();cout<<R"(    AAA
-            PA                    A AA              )";kolor=12;kolory();cout<<"b";kolor=9;kolory();cout<<R"(
-    )";kolor=12;kolory();cout<<"a";kolor=9;kolory();cout<<R"(      AA                  YAA     AA
-          AA                 AAU          AA
-         AAA AAAAAD    AAAAAS              AAAAP
-        A    AAA                          A     AAM
-       AA        AA                       A          AA
-      AA           AA                    A             DAA
-     AU             A                   AA                 AA
-    WA   )";kolor=12;kolory();cout<<"beta";kolor=9;kolory();cout<<R"(         A                  A       )";kolor=12;kolory();cout<<"alfa";kolor=9;kolory();cout<<R"(          AAG
-   AA                 A                  A                        AAP
-  AA                  OA                 AA                          AAA
- AA                   DA                  A                             AAA
-WAGWHBBBBBBBBBBBBBBBBBPA MBBBBBBBBBBBBBBBBWAAKBBBBBBBBBBBBBBBBBBBBBBBBBBHS  AAA
-                                )";kolor=12;kolory();cout<<"c\n";
+                                                              .;:
+                                                             :  ;
+                                                           :    :
+                                                         :. )";kolor=12;kolory();cout<<"alfa";kolor=9;kolory();cout<<R"(..
+                                                       ;;       ..
+                                                     ::  .;..    ;
+                                                   ::         ...;
+                                                 .:               ;
+                                               .:                 +
+                                             .;.                  :.
+                                            :.                     :
+                                          :.                       :
+                                        ;:                         ..
+                                      .:                           ..
+                                    ::                              :
+                                  .:                                ;
+                     )";kolor=12;kolory();cout<<"c";kolor=9;kolory();cout<<R"(            :                                  .:     )";kolor=12;kolory();cout<<"b";kolor=9;kolory();cout<<R"(
+                               :.                                    +
+                             ;.                                      ;
+                           :.                                         :
+                         ::                                           :
+                       ::                                             :.
+                     .:                                               :.
+                   .:                                                  :
+                  ;                                                    ;
+                :.                                                     :.
+              ;:                                                        ;
+            ::.:                                                        +
+          ::    :                                                   .+   :
+        ::       +                                                ::     :
+      .:   )";kolor=12;kolory();cout<<"beta";kolor=9;kolory();cout<<R"(   :                                              ;)";kolor=12;kolory();cout<<" gamma";kolor=9;kolory();cout<<R"( :
+    .:            :                                             ..       :
+   ;.             ..                                            :        ..
+   .......................................................................
+                                       )";kolor=12;kolory();cout<<"a\n";kolor=9;kolory();
 }
 void logo()
 {
@@ -82,12 +98,14 @@ void obliczanie()
                 gamma=180-alfa-beta;
                 cout<<gamma<<"gamma\n";
                 cout<<c<<" c\n";
-                sin_alfa=sin(alfa);sin_beta=sin(beta);sin_gamma=sin(gamma);
+                float sin_alfa = sin(alfa);
+                sin_beta = sin(beta);
+                sin_gamma = 1;
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
                 cout<<sin_gamma<<" singamma\n";
-                a=(c*sin(alfa))/sin_gamma; cout<<a<<" bok a\n";
-                b=(c*sin(beta))/sin_gamma;cout<<b<<" bok b\n";
+                a=c*(sin_alfa/sin_gamma); cout<<a<<" bok a\n";
+                b=c*(sin_beta/sin_gamma);cout<<b<<" bok b\n";
                 exit(0);
             }
             else if (bk_b==1)
@@ -95,7 +113,7 @@ void obliczanie()
                 cout<<"kat alfa, beta, bok b\n";
                 gamma=180-alfa-beta;
                 cout<<gamma<<"gamma\n";
-                sin_alfa = sin(alfa);
+                float sin_alfa = sin(alfa);
                 sin_beta = sin(beta);
                 sin_gamma = sin(gamma);
                 cout<<sin_alfa<<endl;
@@ -108,12 +126,12 @@ void obliczanie()
                 cout<<"kat alfa, beta, bok a\n";
                 gamma=180-alfa-beta;
                 cout<<gamma<<"gamma\n";
-                sin_alfa = sin(alfa);
+                //sin_alfa = sin(alfa);
                 sin_beta = sin(beta);
                 sin_gamma = sin(gamma);
-                cout<<sin_alfa<<endl;
+                //cout<<sin_alfa<<endl;
                 cout<<sin_beta<<endl;
-                a=c*sin_alfa/sin_gamma; cout<<a<<" bok a\n";
+                //a=c*sin_alfa/sin_gamma; cout<<a<<" bok a\n";
                 b=c*sin_beta/sin_gamma;cout<<b<<"bok b\n";
                 exit(0);
             }
@@ -123,7 +141,21 @@ void obliczanie()
             if (bk_c==1)
             {
                 cout<<"kat alfa, gamma, bok c\n";
+                cout<<alfa<<" alfa\n";
+                cout<<gamma<<" gamma\n";
+                beta=180-alfa-gamma;
+                cout<<beta<<"beta\n";
+                cout<<c<<" c\n";
+                float sin_alfa=sin(alfa);
+                sin_beta=sin(beta);
+                sin_gamma=sin(gamma);
+                cout<<sin_alfa<<" sinalfa\n";
+                cout<<sin_beta<<" sinbeta\n";
+                cout<<sin_gamma<<" singamma\n";
+                a=c*(sin_alfa/sin_gamma); cout<<a<<" bok a\n";
+                b=a*(sin_beta/sin_gamma);cout<<b<<" bok b\n";
                 exit(0);
+
             }
             else if(bk_b==1)
             {
