@@ -124,15 +124,21 @@ void obliczanie()
             }
             else if (bk_b==1)
             {
-                cout<<"kat alfa, beta, bok b\n";
+               cout<<"kat alfa, beta, bok b\n";
+                cout<<alfa<<" alfa\n";
+                cout<<beta<<" beta\n";
                 gamma=180-alfa-beta;
+                konwersja_na_rad();
                 cout<<gamma<<"gamma\n";
-                float sin_alfa = sin(alfa);
-                sin_beta = sin(beta);
-                sin_gamma = sin(gamma);
-                cout<<sin_alfa<<endl;
-                cout<<sin_beta<<endl;
-                a=(c*(sin_alfa/sin_gamma)); cout<<a<<endl;
+                cout<<b<<" b\n";
+                sin_alfa = sin(alfaRad);
+                sin_beta = sin(betaRad);
+                sin_gamma = sin(gammaRad);
+                cout<<sin_alfa<<" sinalfa\n";
+                cout<<sin_beta<<" sinbeta\n";
+                cout<<sin_gamma<<" singamma\n";
+                a=b*(sin_alfa/sin_beta); cout<<a<<" bok a\n";
+                c=b*(sin_gamma/sin_beta);cout<<c<<" bok b\n";
                 exit(0);
             }
             else if (bk_a==1)
