@@ -4,12 +4,12 @@
 using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 char wybor, wybor2,wybor3;
-float alfa,beta,gamma,a,b,c,sin_alfa,sin_beta,sin_gamma=0;
-int kolor,juz_zapisane,katy,boki=0;
+float alfa,beta,gamma,alfaRad,betaRad,gammaRad,a,b,c,sin_alfa,sin_beta,sin_gamma=0;
+int kolor,juz_zapisane,katy,konw,boki=0;
 bool kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c;
-void konwersja(sin_alfa, sin_beta, sin_gamma)
+void konwersja(konw)
 {
-    //konwersja stopni na radiany aby obliczyc sinusy 
+    
 }
 void kolory()
 {
