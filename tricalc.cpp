@@ -109,11 +109,12 @@ void obliczanie()
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
                 gamma=180-alfa-beta;
+                konwersja_na_rad();
                 cout<<gamma<<"gamma\n";
                 cout<<c<<" c\n";
-                float sin_alfa = sin(alfa);
-                sin_beta = sin(beta);
-                sin_gamma = 1;
+                sin_alfa = sin(alfaRad);
+                sin_beta = sin(betaRad);
+                sin_gamma = sin(gammaRad);
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
                 cout<<sin_gamma<<" singamma\n";
