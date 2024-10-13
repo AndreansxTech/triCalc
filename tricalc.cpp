@@ -143,16 +143,21 @@ void obliczanie()
             }
             else if (bk_a==1)
             {
-                cout<<"kat alfa, beta, bok a\n";
+               cout<<"kat alfa, beta, bok a\n";
+                cout<<alfa<<" alfa\n";
+                cout<<beta<<" beta\n";
                 gamma=180-alfa-beta;
+                konwersja_na_rad();
                 cout<<gamma<<"gamma\n";
-                //sin_alfa = sin(alfa);
-                sin_beta = sin(beta);
-                sin_gamma = sin(gamma);
-                //cout<<sin_alfa<<endl;
-                cout<<sin_beta<<endl;
-                //a=c*sin_alfa/sin_gamma; cout<<a<<" bok a\n";
-                b=c*sin_beta/sin_gamma;cout<<b<<"bok b\n";
+                cout<<a<<" a\n";
+                sin_alfa = sin(alfaRad);
+                sin_beta = sin(betaRad);
+                sin_gamma = sin(gammaRad);
+                cout<<sin_alfa<<" sinalfa\n";
+                cout<<sin_beta<<" sinbeta\n";
+                cout<<sin_gamma<<" singamma\n";
+                b=a*(sin_beta/sin_alfa); cout<<a<<" bok a\n";
+                c=a*(sin_gamma/sin_alfa);cout<<c<<" bok b\n";
                 exit(0);
             }
         }
