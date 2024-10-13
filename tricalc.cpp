@@ -120,11 +120,11 @@ void obliczanie()
                 cout<<sin_gamma<<" singamma\n";
                 a=c*(sin_alfa/sin_gamma); cout<<a<<" bok a\n";
                 b=c*(sin_beta/sin_gamma);cout<<b<<" bok b\n";
-                exit(0);
+                exit();
             }
             else if (bk_b==1)
             {
-               cout<<"kat alfa, beta, bok b\n";
+                cout<<"kat alfa, beta, bok b\n";
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
                 gamma=180-alfa-beta;
@@ -139,11 +139,10 @@ void obliczanie()
                 cout<<sin_gamma<<" singamma\n";
                 a=b*(sin_alfa/sin_beta); cout<<a<<" bok a\n";
                 c=b*(sin_gamma/sin_beta);cout<<c<<" bok b\n";
-                exit(0);
             }
             else if (bk_a==1)
             {
-               cout<<"kat alfa, beta, bok a\n";
+                cout<<"kat alfa, beta, bok a\n";
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
                 gamma=180-alfa-beta;
@@ -158,7 +157,6 @@ void obliczanie()
                 cout<<sin_gamma<<" singamma\n";
                 b=a*(sin_beta/sin_alfa); cout<<a<<" bok a\n";
                 c=a*(sin_gamma/sin_alfa);cout<<c<<" bok b\n";
-                exit(0);
             }
         }
         else if(kat_alfa==1&&kat_gamma==1)
@@ -171,7 +169,7 @@ void obliczanie()
                 beta=180-alfa-gamma;
                 cout<<beta<<"beta\n";
                 cout<<c<<" c\n";
-                float sin_alfa=sin(alfa);
+                sin_alfa=sin(alfa);
                 sin_beta=sin(beta);
                 sin_gamma=sin(gamma);
                 cout<<sin_alfa<<" sinalfa\n";
@@ -211,7 +209,6 @@ void obliczanie()
                 exit(0);
             }
         }
-        exit(0);
     }
     else if (katy==1&&boki==2)
     {
@@ -249,7 +246,6 @@ void obliczanie()
             else if (kat_gamma==1)
             {
                 cout<<"bok a, c kat g";
-                exit(0);
             }
         }
         exit(0);
@@ -265,16 +261,18 @@ void obliczanie()
         exit(0);
     }
 
-    exit(0);
 }
 
 int main()
 {
 
-    {
     juz_zapisane,katy,boki=0;
     logo();
+  while (true)
+  {
     menu();
+    juz_zapisane,katy,boki=0;
+    //kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c=0;
         while (juz_zapisane<3)
         {
         kolor=11;kolory();
@@ -397,5 +395,6 @@ int main()
         }
         obliczanie();
     }
+
     return 0;
 }
