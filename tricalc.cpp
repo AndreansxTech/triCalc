@@ -1,15 +1,24 @@
 #include <iostream>
 #include <windows.h>
 #include <cmath>
+#define M_PI 3.14159265358979323846
 using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 char wybor, wybor2,wybor3;
-float alfa,beta,gamma,alfaRad,betaRad,gammaRad,a,b,c,sin_alfa,sin_beta,sin_gamma=0;
-int kolor,juz_zapisane,katy,konw,boki=0;
+float alfa,beta,gamma,alfaRad,betaRad,gammaRad,a,b,c,sin_alfa,sin_beta,sin_gamma=0.0;
+int kolor,juz_zapisane,katy,konw,boki=0.0;
 bool kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c;
-void konwersja(konw)
+void konwersja_na_rad()
 {
-    
+    alfaRad = alfa*M_PI/180.0;
+    betaRad = beta*M_PI/180.0;
+    gammaRad = gamma*M_PI/180.0;
+}
+void konwersja_na_stop()
+{
+    alfa = alfaRad*180.0/M_PI;
+    betaRad = betaRad*180.0/M_PI;
+    gammaRad = gammaRad*180.0/M_PI;
 }
 void kolory()
 {
