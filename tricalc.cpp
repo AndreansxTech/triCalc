@@ -120,7 +120,7 @@ void obliczanie()
                 cout<<sin_gamma<<" singamma\n";
                 a=c*(sin_alfa/sin_gamma); cout<<a<<" bok a\n";
                 b=c*(sin_beta/sin_gamma);cout<<b<<" bok b\n";
-                exit();
+                exit(0);
             }
             else if (bk_b==1)
             {
@@ -139,6 +139,7 @@ void obliczanie()
                 cout<<sin_gamma<<" singamma\n";
                 a=b*(sin_alfa/sin_beta); cout<<a<<" bok a\n";
                 c=b*(sin_gamma/sin_beta);cout<<c<<" bok b\n";
+                exit(0);
             }
             else if (bk_a==1)
             {
@@ -157,6 +158,7 @@ void obliczanie()
                 cout<<sin_gamma<<" singamma\n";
                 b=a*(sin_beta/sin_alfa); cout<<a<<" bok a\n";
                 c=a*(sin_gamma/sin_alfa);cout<<c<<" bok b\n";
+                exit(0);
             }
         }
         else if(kat_alfa==1&&kat_gamma==1)
