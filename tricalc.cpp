@@ -105,6 +105,7 @@ void obliczanie()
         {
             if (bk_c==1)
             {
+                //kontrolnie kilka dodatkowych wypisan alfy i bety oraz sinów alfy i bety
                 cout<<"kat alfa, beta, bok c\n";
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
