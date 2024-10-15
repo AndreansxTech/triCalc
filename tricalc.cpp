@@ -17,8 +17,8 @@ void konwersja_na_rad()
 void konwersja_na_stop()
 {
     alfa = alfaRad*180.0/M_PI;
-    betaRad = betaRad*180.0/M_PI;
-    gammaRad = gammaRad*180.0/M_PI;
+    beta = betaRad*180.0/M_PI;
+    gamma = gammaRad*180.0/M_PI;
 }
 void kolory()
 {
