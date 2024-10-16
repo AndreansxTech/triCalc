@@ -1,7 +1,7 @@
 #include <iostream>
 #include <windows.h>
 #include <cmath>
-#define M_PI 3.14159265358979323846
+#define PI 3.14159265358979323846
 using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 char wybor, wybor2,wybor3;
@@ -10,15 +10,15 @@ int kolor,juz_zapisane,katy,konw,boki=0.0;
 bool kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c;
 void konwersja_na_rad()
 {
-    alfaRad = alfa*M_PI/180.0;
-    betaRad = beta*M_PI/180.0;
-    gammaRad = gamma*M_PI/180.0;
+    alfaRad = alfa*PI/180.0;
+    betaRad = beta*PI/180.0;
+    gammaRad = gamma*PI/180.0;
 }
 void konwersja_na_stop()
 {
-    alfa = alfaRad*180.0/M_PI;
-    beta = betaRad*180.0/M_PI;
-    gamma = gammaRad*180.0/M_PI;
+    alfa = alfaRad*180.0/PI;
+    beta = betaRad*180.0/PI;
+    gamma = gammaRad*180.0/PI;
 }
 void kolory()
 {
