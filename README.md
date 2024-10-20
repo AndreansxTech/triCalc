@@ -12,6 +12,6 @@ Work In Progress... Na dole jest to co pokazuje się po wpisaniu opcji "t" oraz 
 
 
 ![Zrzut ekranu 2024-10-10 225551](https://github.com/user-attachments/assets/a5ec08a4-bb73-4951-8249-323d07b31fd8)</br>
-![Zrzut ekranu 2024-10-20 204357](https://github.com/user-attachments/assets/17a8e0b2-a8fa-48a3-a333-96991cb9d6b9)</br>
+![Zrzut ekranu 2024-10-20 223524](https://github.com/user-attachments/assets/99bd167e-adcd-4d32-a1e3-2f2e9b700ed4)</br>
 
 W planach na przyszłość jest o wiele bardziej skrócona wersja kalkulatora.
