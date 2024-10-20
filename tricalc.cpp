@@ -5,8 +5,8 @@
 using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 char wybor, wybor2,wybor3;
-float alfa,beta,gamma,alfaRad,betaRad,gammaRad,a,b,c,sin_alfa,sin_beta,sin_gamma=0.0;
-int juz_zapisane,katy,konw,boki=0;
+float alfa,beta,gamma,alfaRad,betaRad,gammaRad,a,b,c,sin_alfa,sin_beta,sin_gamma,Obw,P=0.0;
+int juz_zapisane,katy,boki=0;
 bool kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c;
 void konwersja_na_rad()
 {
@@ -20,6 +20,13 @@ void konwersja_na_stop()
     beta = betaRad*180.0/M_PI;
     gamma = gammaRad*180.0/M_PI;
 }
+void oblicz_sin()
+{
+    sin_alfa=sin(alfaRad);
+    sin_beta=sin(betaRad);
+    sin_gamma=sin(gammaRad);
+}
+
 void kolory(int kolor)
 {
     SetConsoleTextAttribute(color,kolor);
@@ -92,7 +99,18 @@ void informacja(int inform)
         SetConsoleTextAttribute(color,10); cout<<R"(OK)";
         SetConsoleTextAttribute(color,7); cout<<R"(  ] )";
     }
+    else if(inform==2)
+    {
+        SetConsoleTextAttribute(color,7); cout<<R"([  )";
+        SetConsoleTextAttribute(color,4); cout<<R"(ERROR)";
+        SetConsoleTextAttribute(color,7); cout<<R"(  ] )";
+    }
 
+}
+void pole_obwod()
+{
+    P=a*c*sin_beta/2; informacja(1);cout<<"Pole wynosi ";kolory(9);cout<<P<<endl;
+    Obw=a+b+c; informacja(1);cout<<"Obwod wynosi ";kolory(9);cout<<Obw<<endl;
 }
 void menu()
 {
@@ -116,62 +134,55 @@ void obliczanie()
         {
             if (bk_c==1)
             {
-                informacja(1);
-                cout<<"Obliczanie bokow a oraz b\n";
-                cout<<alfa<<" alfa\n";
-                cout<<beta<<" beta\n";
+                informacja(1);cout<<"Obliczanie bokow a oraz b\n";
+                informacja(1);cout<<"Wpisana alfa to ";kolory(9);cout<<alfa<<endl;
+                informacja(1);cout<<"Wpisana beta to ";kolory(9);cout<<beta<<endl;
                 gamma=180-alfa-beta;
-                konwersja_na_rad();
-                cout<<gamma<<"gamma\n";
+                konwersja_na_rad();oblicz_sin();
+                /*cout<<gamma<<"gamma\n";
                 cout<<c<<" c\n";
-                sin_alfa = sin(alfaRad);
-                sin_beta = sin(betaRad);
-                sin_gamma = sin(gammaRad);
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
-                cout<<sin_gamma<<" singamma\n";
-                a=c*(sin_alfa/sin_gamma);informacja(1);cout<<"Bok a wynosi "<<a<<endl;
-                b=c*(sin_beta/sin_gamma);informacja(1);cout<<"Bok b wynosi "<<b<<endl;
+                cout<<sin_gamma<<" singamma\n";*/
+                a=c*(sin_alfa/sin_gamma);informacja(1);cout<<"Bok a wynosi ";kolory(9);cout<<a<<endl;
+                b=c*(sin_beta/sin_gamma);informacja(1);cout<<"Bok b wynosi ";kolory(9);cout<<b<<endl;
+                pole_obwod();
                 exit(0);
             }
             else if (bk_b==1)
             {
-                informacja(1);
-                cout<<"Obliczanie bokow a oraz c\n";
-                cout<<alfa<<" alfa\n";
-                cout<<beta<<" beta\n";
+                cout<<endl;
+                informacja(1);cout<<"Obliczanie bokow a oraz c\n";
+                informacja(1);cout<<"Wpisana alfa to ";kolory(9);cout<<alfa<<endl;
+                informacja(1);cout<<"Wpisana beta to ";kolory(9);cout<<beta<<endl;
                 gamma=180-alfa-beta;
-                konwersja_na_rad();
-                cout<<gamma<<"gamma\n";
+                konwersja_na_rad();oblicz_sin();
+                /*cout<<gamma<<"gamma\n";
                 cout<<b<<" b\n";
-                sin_alfa = sin(alfaRad);
-                sin_beta = sin(betaRad);
-                sin_gamma = sin(gammaRad);
+                oblicz_sin();
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
-                cout<<sin_gamma<<" singamma\n";
-                a=b*(sin_alfa/sin_beta);informacja(1); cout<<"Bok a wynosi "<<a<<endl;
-                c=b*(sin_gamma/sin_beta);informacja(1); cout<<"Bok c wynosi "<<c<<endl;
+                cout<<sin_gamma<<" singamma\n";*/
+                a=b*(sin_alfa/sin_beta);informacja(1); cout<<"Bok a wynosi ";kolory(9);cout<<a<<endl;
+                c=b*(sin_gamma/sin_beta);informacja(1); cout<<"Bok c wynosi ";kolory(9);cout<<c<<endl;
+                pole_obwod();
                 exit(0);
             }
             else if (bk_a==1)
             {
-                informacja(1);
-                cout<<"Obliczanie bokow b oraz c\n";
-                cout<<alfa<<" alfa\n";
-                cout<<beta<<" beta\n";
+                informacja(1);cout<<"Obliczanie bokow b oraz c\n";
+                informacja(1);cout<<"Wpisana alfa to ";kolory(9);cout<<alfa<<endl;
+                informacja(1);cout<<"Wpisana beta to ";kolory(9);cout<<beta<<endl;
                 gamma=180-alfa-beta;
-                konwersja_na_rad();
-                cout<<gamma<<"gamma\n";
+                konwersja_na_rad();oblicz_sin();
+                /*cout<<gamma<<"gamma\n";
                 cout<<a<<" a\n";
-                sin_alfa = sin(alfaRad);
-                sin_beta = sin(betaRad);
-                sin_gamma = sin(gammaRad);
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
-                cout<<sin_gamma<<" singamma\n";
+                cout<<sin_gamma<<" singamma\n";*/
                 b=a*(sin_beta/sin_alfa); informacja(1); cout<<"Bok b wynosi "<<b<<endl;
                 c=a*(sin_gamma/sin_alfa); informacja(1); cout<<"Bok c wynosi "<<c<<endl;
+                pole_obwod();
                 exit(0);
             }
         }
@@ -180,45 +191,52 @@ void obliczanie()
             if (bk_c==1)
             {
                 informacja(1); cout<<"Obliczanie bokow a oraz b\n";
-                cout<<alfa<<" alfa\n";
-                cout<<gamma<<" gamma\n";
+                informacja(1);cout<<"Wpisana alfa to ";kolory(9);cout<<alfa<<endl;
+                informacja(1);cout<<"Wpisana gamma to ";kolory(9);cout<<gamma<<endl;
                 beta=180-alfa-gamma;
-                konwersja_na_rad();
-                cout<<beta<<"beta\n";
+                konwersja_na_rad();oblicz_sin();
+                /*cout<<beta<<"beta\n";
                 cout<<c<<" c\n";
-                sin_alfa=sin(alfaRad);
-                sin_beta=sin(betaRad);
-                sin_gamma=sin(gammaRad);
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
-                cout<<sin_gamma<<" singamma\n";
-                a=c*(sin_alfa/sin_gamma); informacja(1);cout<<a<<" bok a\n";
-                b=c*(sin_beta/sin_gamma);informacja(1);cout<<b<<" bok b\n";
+                cout<<sin_gamma<<" singamma\n";*/
+                a=c*(sin_alfa/sin_gamma); informacja(1);cout<<"Bok a wynosi ";kolory(9);cout<<a<<endl;
+                b=c*(sin_beta/sin_gamma);informacja(1);cout<<"Bok b wynosi ";kolory(9);cout<<b<<endl;
+                pole_obwod();
                 exit(0);
 
             }
             else if(bk_b==1)
             {
                 informacja(1);cout<<"Obliczanie bokow a oraz c\n";
-                cout<<alfa<<" alfa\n";
-                cout<<gamma<<" gamma\n";
+                informacja(1);cout<<"Wpisana alfa to ";kolory(9);cout<<alfa<<endl;
+                informacja(1);cout<<"Wpisana gamma to ";kolory(9);cout<<gamma<<endl;
                 beta=180-alfa-gamma;
-                konwersja_na_rad();
-                cout<<beta<<" beta\n";
+                konwersja_na_rad();oblicz_sin();
+                /*cout<<beta<<" beta\n";
                 cout<<b<<" b\n";
-                sin_alfa=sin(alfaRad);
-                sin_beta=sin(betaRad);
-                sin_gamma=sin(gammaRad);
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
-                cout<<sin_gamma<<" singamma\n";
-                a=b*(sin_alfa/sin_beta); informacja(1); cout<<"Bok a wynosi "<<a<<endl;
-                c=b*(sin_gamma/sin_beta);informacja(1);cout<<"Bok c wynosi "<<c<<endl;
+                cout<<sin_gamma<<" singamma\n";*/
+                a=b*(sin_alfa/sin_beta); informacja(1); cout<<"Bok a wynosi ";kolory(9);cout<<a<<endl;
+                c=b*(sin_gamma/sin_beta);informacja(1);cout<<"Bok c wynosi ";kolory(9);cout<<c<<endl;
+                pole_obwod();
                 exit(0);
             }
-            else
+            else if(bk_a==1)
             {
                 informacja(1);cout<<"Obliczanie bokow b oraz c\n";
+                informacja(1);cout<<"Wpisana alfa to ";kolory(9);cout<<alfa<<endl;
+                informacja(1);cout<<"Wpisana gamma to ";kolory(9);cout<<gamma<<endl;
+                beta=180-alfa-gamma;
+                konwersja_na_rad();
+                oblicz_sin();
+                /*cout<<sin_alfa<<" sinalfa\n";
+                cout<<sin_beta<<" sinbeta\n";
+                cout<<sin_gamma<<" singamma\n";*/
+                b=a*(sin_beta/sin_alfa);informacja(1);cout<<"Bok b wynosi ";kolory(9);cout<<b<<endl;
+                c=a*(sin_gamma/sin_alfa);informacja(1);cout<<"Bok c wynosi ";kolory(9);cout<<c<<endl;
+                pole_obwod();
                 exit(0);
             }
         }
@@ -226,17 +244,35 @@ void obliczanie()
         {
             if (bk_c==1)
             {
-                cout<<"kat beta, gamma, bok c\n";
+                informacja(1);cout<<"Obliczanie bokow a oraz b\n";
+                informacja(1);cout<<"Wpisana beta to ";kolory(9);cout<<beta<<endl;
+                informacja(1);cout<<"Wpisana gamma to ";kolory(9);cout<<gamma<<endl;
+                alfa=180-beta-gamma;konwersja_na_rad();oblicz_sin();
+                a=c*sin_alfa/sin_gamma;informacja(1);cout<<"Bok a wynosi ";kolory(9);cout<<a<<endl;
+                b=c*sin_beta/sin_gamma;informacja(1);cout<<"Bok b wynosi ";kolory(9);cout<<b<<endl;
+                pole_obwod();
                 exit(0);
             }
             else if (bk_b==1)
             {
-                cout<<"kat beta, gamma, bok b\n";
+                informacja(1);cout<<"Obliczanie bokow a oraz c\n";
+                informacja(1);cout<<"Wpisana beta to ";kolory(9);cout<<beta<<endl;
+                informacja(1);cout<<"Wpisana gamma to ";kolory(9);cout<<gamma<<endl;
+                alfa=180-beta-gamma;konwersja_na_rad();oblicz_sin();
+                a=b*sin_alfa/sin_beta;informacja(1);cout<<"Bok a wynosi ";kolory(9);cout<<a<<endl;
+                c=b*sin_gamma/sin_beta;informacja(1);cout<<"Bok c wynosi ";kolory(9);cout<<c<<endl;
+                pole_obwod();
                 exit(0);
             }
-            else if (bk_c==1)
+            else if (bk_a==1)
             {
-                cout<<"kat beta, gamma, bok a\n";
+                informacja(1);cout<<"Obliczanie bokow b oraz c\n";
+                informacja(1);cout<<"Wpisana beta to ";kolory(9);cout<<beta<<endl;
+                informacja(1);cout<<"Wpisana gamma to ";kolory(9);cout<<gamma<<endl;
+                alfa=180-beta-gamma;konwersja_na_rad();oblicz_sin();
+                b=a*sin_beta/sin_alfa;informacja(1);cout<<"Bok b wynosi ";kolory(9);cout<<b<<endl;
+                c=a*sin_gamma/sin_alfa;informacja(1);cout<<"Bok c wynosi ";kolory(9);cout<<c<<endl;
+                pole_obwod();
                 exit(0);
             }
         }
@@ -321,7 +357,7 @@ int main()
                     informacja(1);cout<<"Wybrales przypisanie wartosci katowi alfa\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>alfa))
                     {
-                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>alfa;
+                        informacja(2);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>alfa;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;katy+=1;kat_alfa=1;
@@ -331,7 +367,7 @@ int main()
                     informacja(1);cout<<"Wybrales przypisanie wartosci katowi beta\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>beta))
                     {
-                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>beta;
+                        informacja(2);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>beta;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;katy+=1;kat_beta=1;
@@ -341,13 +377,13 @@ int main()
                     informacja(1);cout<<"Wybrales przypisanie wartosci katowi gamma\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>gamma))
                     {
-                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>gamma;
+                        informacja(2);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>gamma;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;katy+=1;kat_gamma=1;
                     break;
                 default:
-                    kolory(12);cout<<"Nie ma takiej opcji\n";
+                    informacja(2);cout<<"Nie ma takiej opcji\n";
                     break;
                 }//swithc
                 break;
@@ -362,7 +398,7 @@ int main()
                     informacja(1);cout<<"Wybrales przypisanie wartosci bokowi a\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>a))
                     {
-                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>a;
+                        informacja(2);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>a;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;boki+=1;bk_a=1;
@@ -372,7 +408,7 @@ int main()
                     informacja(1);cout<<"Wybrales przypisanie wartosci bokowi b\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>b))
                     {
-                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>b;
+                        informacja(2);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>b;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;boki+=1;bk_b=1;
@@ -382,13 +418,13 @@ int main()
                     informacja(1);cout<<"Wybrales przypisanie wartosci bokowi c\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>c))
                     {
-                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>c;
+                        informacja(2);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>c;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;boki+=1;bk_c=1;
                     break;
                 default:
-                    kolory(12);cout<<"Nie ma takiej opcji\n";
+                    informacja(2);cout<<"Nie ma takiej opcji\n";
                     break;
                 }//swithc
             break;
@@ -408,8 +444,12 @@ int main()
                            }
                         exit(0);
                         break;
-                    default:
+                    case 'n':
+                    case 'N':
                         informacja(1);cout<<"Zostajesz w programie\n";
+                        break;
+                    default:
+                        informacja(2);cout<<"Nie ma takiej opcji\n";
                         break;
                     }
                 break;
@@ -418,7 +458,7 @@ int main()
                     trojkat();
                     break;
             default:
-                    kolory(12);cout<<" Nie ma takiej opcji\n"; break;
+                    informacja(2);cout<<" Nie ma takiej opcji\n"; break;
             }//swtich
 
         }
