@@ -6,7 +6,7 @@ using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 char wybor, wybor2,wybor3;
 float alfa,beta,gamma,alfaRad,betaRad,gammaRad,a,b,c,sin_alfa,sin_beta,sin_gamma=0.0;
-int kolor,juz_zapisane,katy,konw,boki=0.0;
+int juz_zapisane,katy,konw,boki=0;
 bool kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c;
 void konwersja_na_rad()
 {
@@ -16,27 +16,22 @@ void konwersja_na_rad()
 }
 void konwersja_na_stop()
 {
-    alfa = alfaRad*180.0/M_PI;
-    betaRad = betaRad*180.0/M_PI;
-    gammaRad = gammaRad*180.0/M_PI;
+    alfa = alfaRad*180.0/PI;
+    beta = betaRad*180.0/PI;
+    gamma = gammaRad*180.0/PI;
 }
-void kolory()
+void kolory(int kolor)
 {
     SetConsoleTextAttribute(color,kolor);
 }
-void ok()
-{
-    SetConsoleTextAttribute(color,7); cout<<R"([  )";
-    SetConsoleTextAttribute(color,10); cout<<R"(OK)";
-    SetConsoleTextAttribute(color,7); cout<<R"(  ] )";
-}
 void trojkat()
-{   kolor=9;kolory();
+{
+    kolory(9);
     cout<<R"(
                                                               .;:
                                                              :  ;
                                                            :    :
-                                                         :. )";kolor=12;kolory();cout<<"alfa";kolor=9;kolory();cout<<R"(..
+                                                         :. )";kolory(12);cout<<"alfa";kolory(9);cout<<R"(..
                                                        ;;       ..
                                                      ::  .;..    ;
                                                    ::         ...;
@@ -49,7 +44,7 @@ void trojkat()
                                       .:                           ..
                                     ::                              :
                                   .:                                ;
-                     )";kolor=12;kolory();cout<<"c";kolor=9;kolory();cout<<R"(            :                                  .:     )";kolor=12;kolory();cout<<"b";kolor=9;kolory();cout<<R"(
+                     )";kolory(12);cout<<"c";kolory(9);cout<<R"(            :                                  .:     )";kolory(12);cout<<"b";kolory(9);cout<<R"(
                                :.                                    +
                              ;.                                      ;
                            :.                                         :
@@ -63,11 +58,11 @@ void trojkat()
             ::.:                                                        +
           ::    :                                                   .+   :
         ::       +                                                ::     :
-      .:   )";kolor=12;kolory();cout<<"beta";kolor=9;kolory();cout<<R"(   :                                              ;)";kolor=12;kolory();cout<<" gamma";kolor=9;kolory();cout<<R"( :
+      .:   )";kolory(12);cout<<"beta";kolory(9);cout<<R"(   :                                              ;)";kolory(12);cout<<" gamma";kolory(9);cout<<R"( :
     .:            :                                             ..       :
    ;.             ..                                            :        ..
    .......................................................................
-                                       )";kolor=12;kolory();cout<<"a\n";kolor=9;kolory();
+                                       )";kolory(12);cout<<"a\n";kolory(9);
 }
 void logo()
 {
@@ -85,35 +80,45 @@ cout<<R"(  `Mbmo.JMML.   .JMML. `"bmmmd' `Moo9^Yo..JMML.YMbmd'           W     `
        }
     cout<<"\n";SetConsoleTextAttribute(color,7);
 }
-void informacja()
+void informacja(int inform)
 {
-    kolor=14;kolory();cout<<"[";
-    kolor=12;kolory();cout<<"!";
-    kolor=14;kolory();cout<<"] ";
+    if (inform==0)
+    {
+        kolory(14);cout<<"[";
+        kolory(12);cout<<"!";
+        kolory(14);cout<<"] ";
+    }
+    else if (inform==1)
+    {
+        SetConsoleTextAttribute(color,7); cout<<R"([  )";
+        SetConsoleTextAttribute(color,10); cout<<R"(OK)";
+        SetConsoleTextAttribute(color,7); cout<<R"(  ] )";
+    }
+
 }
 void menu()
 {
-    cout<<endl;informacja();
+    cout<<endl;informacja(1);
     cout<<"Pamietaj o zasadach wprowadzania danych: \n";
-    kolor=12;kolory();cout<<" kat alfa";kolor=14;kolory();cout<<" znajduje sie pomiedzy bokami c i b, \n";
-    kolor=12;kolory();cout<<" kat beta";kolor=14;kolory();cout<<" jest miedzy bokami a i c, \n";
-    kolor=12;kolory();cout<<" kat gamma";kolor=14;kolory();cout<<" jest pomiedzy bokami a i b\n";
-    kolor=9;kolory();
+    kolory(12);cout<<" kat alfa";kolory(14);cout<<" znajduje sie pomiedzy bokami c i b, \n";
+    kolory(12);cout<<" kat beta";kolory(14);cout<<" jest miedzy bokami a i c, \n";
+    kolory(12);cout<<" kat gamma";kolory(14);cout<<" jest pomiedzy bokami a i b\n";
+    kolory(9);
     cout<<" Musisz zadeklarowc trzy dane aby obliczyc wszystkie boki trojkata\n Kiedy zadeklarujesz trzy dane program obliczy reszte\n";
 }
 void obliczanie()
 {
-    informacja();
-    cout<<"obliczanie\n Zapisales trzy dane\n";
+    informacja(1);
+    cout<<"Obliczanie\n Zapisales trzy dane\n";
     if (katy==2&&boki==1)
     {
-        ok();
-        cout<<"katy 2 boki 1";
+        cout<<"Podano 2 katy oraz 1 bok\n";
         if(kat_alfa==1&&kat_beta==1)
         {
             if (bk_c==1)
             {
-                cout<<"kat alfa, beta, bok c\n";
+                informacja(1);
+                cout<<"Obliczanie bokow a oraz b\n";
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
                 gamma=180-alfa-beta;
@@ -126,13 +131,14 @@ void obliczanie()
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
                 cout<<sin_gamma<<" singamma\n";
-                a=c*(sin_alfa/sin_gamma); cout<<a<<" bok a\n";
-                b=c*(sin_beta/sin_gamma);cout<<b<<" bok b\n";
+                a=c*(sin_alfa/sin_gamma);informacja(1);cout<<"Bok a wynosi "<<a<<endl;
+                b=c*(sin_beta/sin_gamma);informacja(1);cout<<"Bok b wynosi "<<b<<endl;
                 exit(0);
             }
             else if (bk_b==1)
             {
-                cout<<"kat alfa, beta, bok b\n";
+                informacja(1);
+                cout<<"Obliczanie bokow a oraz c\n";
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
                 gamma=180-alfa-beta;
@@ -145,12 +151,14 @@ void obliczanie()
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
                 cout<<sin_gamma<<" singamma\n";
-                a=b*(sin_alfa/sin_beta); cout<<a<<" bok a\n";
-                c=b*(sin_gamma/sin_beta);cout<<c<<" bok b\n";
+                a=b*(sin_alfa/sin_beta);informacja(1); cout<<"Bok a wynosi "<<a<<endl;
+                c=b*(sin_gamma/sin_beta);informacja(1); cout<<"Bok c wynosi "<<c<<endl;
+                exit(0);
             }
             else if (bk_a==1)
             {
-                cout<<"kat alfa, beta, bok a\n";
+                informacja(1);
+                cout<<"Obliczanie bokow b oraz c\n";
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
                 gamma=180-alfa-beta;
@@ -163,8 +171,9 @@ void obliczanie()
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
                 cout<<sin_gamma<<" singamma\n";
-                b=a*(sin_beta/sin_alfa); cout<<a<<" bok a\n";
-                c=a*(sin_gamma/sin_alfa);cout<<c<<" bok b\n";
+                b=a*(sin_beta/sin_alfa); informacja(1); cout<<"Bok b wynosi "<<b<<endl;
+                c=a*(sin_gamma/sin_alfa); informacja(1); cout<<"Bok c wynosi "<<c<<endl;
+                exit(0);
             }
         }
         else if(kat_alfa==1&&kat_gamma==1)
@@ -268,12 +277,10 @@ void obliczanie()
         cout<<"trzy boki";
         exit(0);
     }
-
 }
 
 int main()
 {
-
     juz_zapisane,katy,boki=0;
     logo();
   while (true)
@@ -283,112 +290,112 @@ int main()
     //kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c=0;
         while (juz_zapisane<3)
         {
-        kolor=11;kolory();
+        kolory(11);
         cout<<"\n Jak narazie zadeklarowales "<<juz_zapisane<<" danych\n";
         cout<<katy<<" katow i "<<boki<<" bokow\n";
-            cout<<"Wybierz co chcesz zapisac (k aby zapisac kat, b aby zapisac bok, t aby pokazac trojkat, w aby wyjsc): ";kolor=9;kolory();cin>>wybor;
+            cout<<"Wybierz co chcesz zapisac (k aby zapisac kat, b aby zapisac bok, t aby pokazac trojkat, w aby wyjsc): ";kolory(9);cin>>wybor;
             switch(wybor)
             {
             case 'k':
             case 'K':
-                informacja(); cout<<"Wybrales zapisanie katu\n Wpisz ktoremu katowi chcesz przypisac wartosc (a- alfa, b-beta, g-gamma): ";
-                kolor=9;kolory();cin>>wybor2;
+                informacja(0); cout<<"Wybrales zapisanie katu\n Wpisz ktoremu katowi chcesz przypisac wartosc (a- alfa, b-beta, g-gamma): ";
+                kolory(9);cin>>wybor2;
                 switch(wybor2)
                 {
                 case 'a':
                 case 'A':
-                    informacja();cout<<"Wybrales przypisanie wartosci katowi alfa\n Wpisz wartosc: ";kolor=9;kolory();
+                    informacja(1);cout<<"Wybrales przypisanie wartosci katowi alfa\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>alfa))
                     {
-                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>alfa;
+                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>alfa;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;katy+=1;kat_alfa=1;
                     break;
                 case 'b':
                 case 'B':
-                    informacja();cout<<"Wybrales przypisanie wartosci katowi beta\n Wpisz wartosc: ";kolor=9;kolory();
+                    informacja(1);cout<<"Wybrales przypisanie wartosci katowi beta\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>beta))
                     {
-                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>beta;
+                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>beta;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;katy+=1;kat_beta=1;
                     break;
                 case 'g':
                 case 'G':
-                    informacja();cout<<"Wybrales przypisanie wartosci katowi gamma\n Wpisz wartosc: ";kolor=9;kolory();
+                    informacja(1);cout<<"Wybrales przypisanie wartosci katowi gamma\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>gamma))
                     {
-                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>gamma;
+                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>gamma;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;katy+=1;kat_gamma=1;
                     break;
                 default:
-                    kolor=12;kolory();cout<<"Nie ma takiej opcji\n";
+                    kolory(12);cout<<"Nie ma takiej opcji\n";
                     break;
                 }//swithc
                 break;
             case 'b':
             case 'B':
-                informacja(); cout<<"Wybrales zapisanie boku\n Wpisz ktoremu bokowi chcesz przypisac wartosc (a, b lub c): ";
-                kolor=9;kolory();cin>>wybor3;
+                informacja(0); cout<<"Wybrales zapisanie boku\n Wpisz ktoremu bokowi chcesz przypisac wartosc (a, b lub c): ";
+                kolory(9);cin>>wybor3;
                 switch(wybor3)
                 {
                 case 'a':
                 case 'A':
-                    informacja();cout<<"Wybrales przypisanie wartosci bokowi a\n Wpisz wartosc: ";kolor=9;kolory();
+                    informacja(1);cout<<"Wybrales przypisanie wartosci bokowi a\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>a))
                     {
-                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>a;
+                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>a;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;boki+=1;bk_a=1;
                     break;
                 case 'b':
                 case 'B':
-                    informacja();cout<<"Wybrales przypisanie wartosci bokowi b\n Wpisz wartosc: ";kolor=9;kolory();
+                    informacja(1);cout<<"Wybrales przypisanie wartosci bokowi b\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>b))
                     {
-                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>b;
+                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>b;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;boki+=1;bk_b=1;
                     break;
                 case 'c':
                 case 'C':
-                    informacja();cout<<"Wybrales przypisanie wartosci bokowi c\n Wpisz wartosc: ";kolor=9;kolory();
+                    informacja(1);cout<<"Wybrales przypisanie wartosci bokowi c\n Wpisz wartosc: ";kolory(9);
                     while(!(cin>>c))
                     {
-                        informacja();cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>c;
+                        informacja(0);cout<<"Nie poprawna wartosc\n Wpisz jeszcze raz: ";cin>>c;
                         cin.clear();cin.ignore();
                     }
                     juz_zapisane+=1;boki+=1;bk_c=1;
                     break;
                 default:
-                    kolor=12;kolory();cout<<"Nie ma takiej opcji\n";
+                    kolory(12);cout<<"Nie ma takiej opcji\n";
                     break;
                 }//swithc
             break;
             case 'w':
             case 'W':
                     char wyjscie;
-                    informacja(); cout<<"Czy napewno chcesz opusic program? T/N: ";kolor=9;kolory();cin>>wyjscie;
+                    informacja(0); cout<<"Czy napewno chcesz opusic program? T/N: ";kolory(9);cin>>wyjscie;
                     switch(wyjscie)
                     {
                     case 't':
                     case 'T':
-                        informacja();cout<<"Zamykanie programu triCalc v0.1";
+                        informacja(1);cout<<"Zamykanie programu triCalc v0.1";
                         for (int w=0; w<5;w++)
                            {
-                            kolor=w+3;kolory();
+                            kolory(w+3);
                             cout<<".";Sleep(70);
                            }
                         exit(0);
                         break;
                     default:
-                        informacja();cout<<"Zostajesz w programie\n";
+                        informacja(1);cout<<"Zostajesz w programie\n";
                         break;
                     }
                 break;
@@ -397,7 +404,7 @@ int main()
                     trojkat();
                     break;
             default:
-                    kolor=12;kolory();cout<<" Nie ma takiej opcji\n"; break;
+                    kolory(12);cout<<" Nie ma takiej opcji\n"; break;
             }//swtich
 
         }
