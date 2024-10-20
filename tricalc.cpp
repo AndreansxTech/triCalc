@@ -1,7 +1,7 @@
 #include <iostream>
 #include <windows.h>
 #include <cmath>
-#define PI 3.14159265358979323846
+#define M_PI 3.14159265358979323846
 using namespace std;
 HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 char wybor, wybor2,wybor3;
@@ -10,15 +10,15 @@ int juz_zapisane,katy,konw,boki=0;
 bool kat_alfa,kat_beta,kat_gamma,bk_a,bk_b,bk_c;
 void konwersja_na_rad()
 {
-    alfaRad = alfa*PI/180.0;
-    betaRad = beta*PI/180.0;
-    gammaRad = gamma*PI/180.0;
+    alfaRad = alfa*M_PI/180.0;
+    betaRad = beta*M_PI/180.0;
+    gammaRad = gamma*M_PI/180.0;
 }
 void konwersja_na_stop()
 {
-    alfa = alfaRad*180.0/PI;
-    beta = betaRad*180.0/PI;
-    gamma = gammaRad*180.0/PI;
+    alfa = alfaRad*180.0/M_PI;
+    beta = betaRad*180.0/M_PI;
+    gamma = gammaRad*180.0/M_PI;
 }
 void kolory(int kolor)
 {
@@ -186,14 +186,14 @@ void obliczanie()
                 konwersja_na_rad();
                 cout<<beta<<"beta\n";
                 cout<<c<<" c\n";
-                sin_alfa=sin(alfa);
-                sin_beta=sin(beta);
-                sin_gamma=sin(gamma);
+                sin_alfa=sin(alfaRad);
+                sin_beta=sin(betaRad);
+                sin_gamma=sin(gammaRad);
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
                 cout<<sin_gamma<<" singamma\n";
-                a=c*(sin_alfa/sin_gamma); cout<<a<<" bok a\n";
-                b=a*(sin_beta/sin_gamma);cout<<b<<" bok b\n";
+                a=c*(sin_alfa/sin_gamma); informacja(1);cout<<a<<" bok a\n";
+                b=c*(sin_beta/sin_gamma);informacja(1);cout<<b<<" bok b\n";
                 exit(0);
 
             }
@@ -206,14 +206,14 @@ void obliczanie()
                 konwersja_na_rad();
                 cout<<beta<<" beta\n";
                 cout<<b<<" b\n";
-                sin_alfa=sin(alfa);
-                sin_beta=sin(beta);
-                sin_gamma=sin(gamma);
+                sin_alfa=sin(alfaRad);
+                sin_beta=sin(betaRad);
+                sin_gamma=sin(gammaRad);
                 cout<<sin_alfa<<" sinalfa\n";
                 cout<<sin_beta<<" sinbeta\n";
                 cout<<sin_gamma<<" singamma\n";
-                a=c*(sin_alfa/sin_gamma); informacja(1); cout<<"Bok a wynosi "<<a<<endl;
-                c=
+                a=b*(sin_alfa/sin_beta); informacja(1); cout<<"Bok a wynosi "<<a<<endl;
+                c=b*(sin_gamma/sin_beta);informacja(1);cout<<"Bok c wynosi "<<c<<endl;
                 exit(0);
             }
             else
