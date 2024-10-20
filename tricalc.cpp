@@ -66,7 +66,7 @@ void trojkat()
 }
 void logo()
 {
-SetConsoleTextAttribute(color,9);cout<<endl;
+kolory(9);cout<<endl;
 cout<<R"(  mm              db   .g8"""bgd         `7MM)"<<endl;Sleep(150);
 cout<<R"(  MM                 .dP'     `M           MM                                       __,)"<<endl;Sleep(150);
 cout<<R"(mmMMmm `7Mb,od8 `7MM dM'       ` ,6"Yb.    MM  ,p6"bo      `7M'   `MF',pP""Yq.     `7MM  )"<<endl;SetConsoleTextAttribute(color,13);Sleep(150);
@@ -74,11 +74,9 @@ cout<<R"(  MM     MM' "'   MM MM         8)   MM    MM 6M'  OO        VA   ,V 6W
 cout<<R"(  MM     MM       MM MM.         ,pm9MM    MM 8M              VA ,V  8M      M8      MM)"<<endl;SetConsoleTextAttribute(color,14);Sleep(150);
 cout<<R"(  MM     MM       MM `Mb.     ,'8M   MM    MM YM.    ,         VVV   YA.    ,A9 ,,   MM)"<<endl;Sleep(150);
 cout<<R"(  `Mbmo.JMML.   .JMML. `"bmmmd' `Moo9^Yo..JMML.YMbmd'           W     `Ybmmd9'  db .JMML.)"<<endl;Sleep(150);
-        for (int i=0; i<89; i++)
-       {
-           cout<<"_"; Sleep(1);
-       }
-    cout<<"\n";SetConsoleTextAttribute(color,7);
+cout<<"__________________________________________________________________________________________";
+
+    cout<<"\n";kolory(7);
 }
 void informacja(int inform)
 {
@@ -98,7 +96,7 @@ void informacja(int inform)
 }
 void menu()
 {
-    cout<<endl;informacja(1);
+    cout<<endl;informacja(0);
     cout<<"Pamietaj o zasadach wprowadzania danych: \n";
     kolory(12);cout<<" kat alfa";kolory(14);cout<<" znajduje sie pomiedzy bokami c i b, \n";
     kolory(12);cout<<" kat beta";kolory(14);cout<<" jest miedzy bokami a i c, \n";
@@ -112,6 +110,7 @@ void obliczanie()
     cout<<"Obliczanie\n Zapisales trzy dane\n";
     if (katy==2&&boki==1)
     {
+        informacja(0);
         cout<<"Podano 2 katy oraz 1 bok\n";
         if(kat_alfa==1&&kat_beta==1)
         {
@@ -180,10 +179,11 @@ void obliczanie()
         {
             if (bk_c==1)
             {
-                cout<<"kat alfa, gamma, bok c\n";
+                informacja(1); cout<<"Obliczanie bokow a oraz b\n";
                 cout<<alfa<<" alfa\n";
                 cout<<gamma<<" gamma\n";
                 beta=180-alfa-gamma;
+                konwersja_na_rad();
                 cout<<beta<<"beta\n";
                 cout<<c<<" c\n";
                 sin_alfa=sin(alfa);
@@ -199,12 +199,26 @@ void obliczanie()
             }
             else if(bk_b==1)
             {
-                cout<<"kat alfa, gamma, bok b\n";
+                informacja(1);cout<<"Obliczanie bokow a oraz c\n";
+                cout<<alfa<<" alfa\n";
+                cout<<gamma<<" gamma\n";
+                beta=180-alfa-gamma;
+                konwersja_na_rad();
+                cout<<beta<<" beta\n";
+                cout<<b<<" b\n";
+                sin_alfa=sin(alfa);
+                sin_beta=sin(beta);
+                sin_gamma=sin(gamma);
+                cout<<sin_alfa<<" sinalfa\n";
+                cout<<sin_beta<<" sinbeta\n";
+                cout<<sin_gamma<<" singamma\n";
+                a=c*(sin_alfa/sin_gamma); informacja(1); cout<<"Bok a wynosi "<<a<<endl;
+                c=
                 exit(0);
             }
             else
             {
-                cout<<"kat alfa, gamma, bok a\n";
+                informacja(1);cout<<"Obliczanie bokow b oraz c\n";
                 exit(0);
             }
         }
