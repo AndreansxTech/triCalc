@@ -16,13 +16,19 @@ void konwersja_na_rad()
 }
 void konwersja_na_stop()
 {
-    alfa = alfaRad*180.0/PI;
-    beta = betaRad*180.0/PI;
-    gamma = gammaRad*180.0/PI;
+    alfa = alfaRad*180.0/M_PI;
+    betaRad = betaRad*180.0/M_PI;
+    gammaRad = gammaRad*180.0/M_PI;
 }
 void kolory()
 {
     SetConsoleTextAttribute(color,kolor);
+}
+void ok()
+{
+    SetConsoleTextAttribute(color,7); cout<<R"([  )";
+    SetConsoleTextAttribute(color,10); cout<<R"(OK)";
+    SetConsoleTextAttribute(color,7); cout<<R"(  ] )";
 }
 void trojkat()
 {   kolor=9;kolory();
@@ -97,16 +103,16 @@ void menu()
 }
 void obliczanie()
 {
-    cout<<"obliczanoie\n zapisales trzy dane\n";
+    informacja();
+    cout<<"obliczanie\n Zapisales trzy dane\n";
     if (katy==2&&boki==1)
     {
+        ok();
         cout<<"katy 2 boki 1";
         if(kat_alfa==1&&kat_beta==1)
         {
             if (bk_c==1)
             {
-                //kontrolnie kilka dodatkowych wypisan alfy i bety oraz sinów alfy i bety
-                informacja();
                 cout<<"kat alfa, beta, bok c\n";
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
@@ -126,7 +132,6 @@ void obliczanie()
             }
             else if (bk_b==1)
             {
-                informacja();
                 cout<<"kat alfa, beta, bok b\n";
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
@@ -142,11 +147,9 @@ void obliczanie()
                 cout<<sin_gamma<<" singamma\n";
                 a=b*(sin_alfa/sin_beta); cout<<a<<" bok a\n";
                 c=b*(sin_gamma/sin_beta);cout<<c<<" bok b\n";
-                exit(0);
             }
             else if (bk_a==1)
             {
-                informacja();
                 cout<<"kat alfa, beta, bok a\n";
                 cout<<alfa<<" alfa\n";
                 cout<<beta<<" beta\n";
@@ -162,7 +165,6 @@ void obliczanie()
                 cout<<sin_gamma<<" singamma\n";
                 b=a*(sin_beta/sin_alfa); cout<<a<<" bok a\n";
                 c=a*(sin_gamma/sin_alfa);cout<<c<<" bok b\n";
-                exit(0);
             }
         }
         else if(kat_alfa==1&&kat_gamma==1)
