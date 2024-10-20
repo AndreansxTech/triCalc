@@ -1,4 +1,5 @@
 <h1>triCalc</h1></br>
+![cpp](https://img.shields.io/badge/C%2B%2B-orange)
 
 ![Zrzut ekranu 2024-10-09 192232](https://github.com/user-attachments/assets/4d79bb2f-0ae7-4118-b31f-8ca856191014)</br>
 Kalkulator trygonometryczny dedykowany do używania przy obróbce metali CNC. Program pozwala wpisać nam trzy dane: kąty oraz boki.</br>
